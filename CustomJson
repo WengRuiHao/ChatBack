@@ -1,0 +1,63 @@
+CustomJson自訂義格式
+加入房間
+{
+	head:{
+		type:"加入房間",
+		timestamp:"當前時間戳",
+		condition:"UUID(當前時間戳+隨間亂數Random)"
+	},
+	UserToRoom{
+		username:"用戶名",
+		roomId:"房間ID"
+	}
+}
+退出房間
+{
+	head:{
+		type:"退出房間",
+		timestamp:"當前時間戳",
+		condition:"UUID(當前時間戳+隨間亂數Random)"
+	},
+	UserToRoom{
+		username:"用戶名",
+		roomId:"房間ID"
+	}
+}
+發送訊息
+{
+	head:{
+		type:"發送訊息",
+		timestamp:"當前時間戳",
+		condition:"UUID(當前時間戳+隨間亂數Random)"
+	},
+	messageDto{
+		sendUser: {
+      		username:"用戶名",
+      		nickname:"暱稱",
+      		gender:"性別"  
+    	},
+    	receiveChat: {
+     		 chatId:房間ID,
+      		chatname:"房間名",
+      		createAt:"創建時間",
+      		creator:{
+        		username:"用戶名",
+      			nickname:"暱稱",
+      			gender:"性別" 
+      		}
+    	},
+    	message: 發送訊息
+	}
+}
+不在房間訊息通知
+{
+	head:{
+		type:"訊息通知",
+		timestamp:"當前時間戳",
+		condition:"UUID(當前時間戳+隨間亂數Random)"
+	},
+	OfflineUser{
+		OfflineUser:"不再房間名單",
+		message: 發送訊息
+	}
+}
